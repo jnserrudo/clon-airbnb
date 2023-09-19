@@ -12,15 +12,9 @@ export const UserMenu = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen= useCallback(()=>{
-    console.log('para cambiar de estado al isOpen')
     setIsOpen((value)=>!value);
   },[])
 
-  console.log( isOpen);
-
-  useEffect(()=>{
-    console.log( isOpen)
-  },[isOpen]);
   return (
     <div className="relative"    >
       <div className="flex flex-row items-center gap-3">
@@ -42,7 +36,6 @@ export const UserMenu = () => {
           Airbnb you home
         </div>
         <div
-        onClick={toggleOpen} 
         className="
           p-4
           md:py-1
