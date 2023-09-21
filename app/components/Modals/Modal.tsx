@@ -80,7 +80,6 @@ const Modal: React.FC<ModalProps> = ({
     bg-neutral-800/70
     "
       >
-        {" "}
         <div
           className="
         relative
