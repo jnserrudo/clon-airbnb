@@ -1,0 +1,3 @@
+se instala prisma y lo corremos con
+npm install -D prisma
+npx prisma init
