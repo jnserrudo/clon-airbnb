@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+//LUEGO DE CREAR LOS MODELOS, PUSHEAMOS A LA BASE DE DATOS QUE TENGAMOS DEFINIDO EN LA CONEXION O URL QUE ESTA EN NUESTRA VARIABLE DE ENTORNO LLAMADA DATABASE_URL
+
+//LUEGO INSTALAMOS LA DEPENDENCIA => npm install next-auth @prisma/client @next-auth/prisma-adapter  //aca instala las 3 al mismo tiempo
+
+//TAMBIEN npm bcrypt para el hash de contraseñas
+//la dependencia de bcrypt no descarga los tipos, por lo que deberemos tambien instalar los tipos con npm install -D @types/bcrypt
+
+//debemos mapear esta id con el objeto id de mongodb, que es un tipo especifico
+model User {
+  //cada modelo de nuestra base de datos va a necesitar tener este tipo de ID
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  //cada usuario va a tener un email que es opcional al poner el signo de pregunta
+  name            String?
+  email           String?   @unique
+  emailVerified   DateTime?
+  image           String?
+  hashedPassword  String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  favoriteIds     String[] @db.ObjectId
+
+  accounts Account[]
+  listings Listing[]
+  reservations Reservation[]
+}
+
+model Account {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId             String   @db.ObjectId
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.String
+  access_token       String?  @db.String
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.String
+  session_state      String?
+
+
+//se crea una relacion con el modelo user usando el ID del usuario 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Listing {
+  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  description String
+  imageSrc String
+  createdAt DateTime @default(now())
+  category  String
+  roomCount Int
+  bathroomCount Int
+  guestCount Int
+  locationValue String
+  userId String @db.ObjectId
+  price Int
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reservations Reservation[]
+}
+
+model Reservation {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  listingId String @db.ObjectId  
+  startDate DateTime
+  endDate DateTime
+  totalPrice Int
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+}

@@ -1,3 +1,69 @@
 se instala prisma y lo corremos con
 npm install -D prisma
 npx prisma init
+
+------------
+Lo que estás viendo es una definición de un modelo de datos utilizando Prisma, un popular ORM (Mapeador Objeto-Relacional) para bases de datos en JavaScript y TypeScript. 
+Prisma utiliza un lenguaje específico de dominio (DSL) para definir los modelos de datos y sus relaciones en la base de datos.
+
+Aquí está la explicación de las anotaciones y atributos que se utilizan en el modelo User que has proporcionado:
+
+id String @id @default(auto()) @map("_id") @db.ObjectId: Esto define el campo id del modelo User.
+
+@id: Indica que este campo es la clave principal de la tabla.
+@default(auto()): Indica que el valor de este campo se generará automáticamente (normalmente para claves primarias autoincrementales).
+@map("_id"): Indica que en la base de datos se mapeará a la columna _id.
+@db.ObjectId: Indica que este campo almacena un identificador de objeto de la base de datos, que generalmente se utiliza con bases de datos NoSQL como MongoDB.
+name String?: Define el campo name como una cadena de texto que es opcional (String? indica que el campo puede ser nulo).
+
+email String? @unique: Define el campo email como una cadena de texto que es opcional (String?) y le agrega la restricción de unicidad (@unique), lo que significa que no 
+puede haber dos registros con el mismo valor de correo electrónico.
+
+emailVerified DateTime?: Define el campo emailVerified como una fecha y hora opcional.
+
+image String?: Define el campo image como una cadena de texto opcional.
+
+hashedPassword String?: Define el campo hashedPassword como una cadena de texto opcional, que generalmente se utiliza para almacenar contraseñas de usuario de forma segura.
+
+createdAt DateTime @default(now()): Define el campo createdAt como una fecha y hora con un valor predeterminado que se establecerá automáticamente en la fecha y hora actual 
+cuando se cree un nuevo registro.
+
+updatedAt DateTime @updatedAt: Define el campo updatedAt como una fecha y hora que se actualizará automáticamente cuando se modifique el registro.
+
+favoriteIds String[] @db.ObjectId: Define el campo favoriteIds como una matriz de cadenas que almacena identificadores de objeto de la base de datos.
+
+Las anotaciones con @ se utilizan para especificar metadatos adicionales sobre los campos del modelo y cómo deben interactuar con la base de datos. Estos metadatos son 
+utilizados por Prisma para generar las consultas SQL adecuadas y facilitar la interacción con la base de datos desde la aplicación.
+
+--------------------------------------------------------------------------------
+El modelo Account que has proporcionado también está definido utilizando Prisma y tiene algunas características interesantes:
+
+id String @id @default(auto()) @map("_id") @db.ObjectId: Define el campo id como una cadena de texto que es la clave primaria de la tabla. Al igual que en el modelo 
+anterior, se usa @default(auto()) para generar automáticamente el valor del campo y @map("_id") para mapearlo a la columna _id en la base de datos. @db.ObjectId 
+indica que este campo almacena un identificador de objeto de la base de datos.
+
+userId String @db.ObjectId: Define el campo userId como una cadena de texto que almacena un identificador de objeto de la base de datos. Esto se utiliza para 
+establecer una relación con el modelo User. El campo userId en este modelo se relaciona con el campo id en el modelo User.
+
+type String: Define el campo type como una cadena de texto.
+
+provider String: Define el campo provider como una cadena de texto.
+
+providerAccountId String: Define el campo providerAccountId como una cadena de texto.
+
+refresh_token String? @db.String y access_token String? @db.String: Estos campos son cadenas de texto opcionales que almacenan tokens de acceso y tokens de actualización, 
+respectivamente. La anotación @db.String indica cómo se almacenan en la base de datos.
+
+expires_at Int?, token_type String?, scope String?, id_token String? @db.String, session_state String?: Estos campos almacenan datos relacionados con la autenticación y 
+la autorización, como la fecha de vencimiento de los tokens, el tipo de token, el alcance, el token de identidad y el estado de la sesión.
+
+user User @relation(fields: [userId], references: [id], onDelete: Cascade): Esta línea establece una relación entre el modelo Account y el modelo User. Utiliza el campo 
+userId en el modelo Account y lo relaciona con el campo id en el modelo User. La opción onDelete: Cascade indica que si se elimina un registro de User, los registros 
+relacionados en Account también se eliminarán en cascada.
+
+@@unique([provider, providerAccountId]): Esta anotación establece una restricción de unicidad en la combinación de los campos provider y providerAccountId, lo que 
+significa que no puede haber dos registros en la tabla Account con la misma combinación de proveedor y proveedorAccountId.
+
+En resumen, el modelo Account se utiliza para almacenar información relacionada con las cuentas de usuario y tiene una relación con el modelo User, lo que permite 
+vincular cuentas de usuario a usuarios específicos en la base de datos. Las anotaciones y atributos se utilizan para definir la estructura de la tabla y las relaciones 
+con la base de datos.
