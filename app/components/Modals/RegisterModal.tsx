@@ -47,7 +47,7 @@ const RegisterModal= () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-
+//HACEMOS UN POST DEL USUARIO, LO REGISTRAMOS, USAMOS LA RUTA DE REGISTER
     axios.post('/api/register', data)
     .then(() => {
       toast.success('Registered!');

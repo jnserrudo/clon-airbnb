@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps>  = ({
 }) => {
   return (
     <button 
-    onClick={onclick}
+    onClick={onClick}
     disabled={disabled}
     className={
       `
@@ -32,13 +32,14 @@ const Button: React.FC<ButtonProps>  = ({
       hover:opacity-80
       transition
       w-full
+      p-1
       ${outline?'bg-white':'bg-rose-500'}
       ${outline?'border-black':'border-rose-500'}
       ${outline?'text-black':'text-white'}
       ${small?'py-1':'py3'}
-      ${outline?'text-sm':'text-md'}
-      ${outline?'font-light':'font-semibold'}
-      ${outline?'border-[1px]':'border-2'}
+      ${small?'text-sm':'text-md'}
+      ${small?'font-light':'font-semibold'}
+      ${small?'border-[1px]':'border-2'}
       
       `
     } >
@@ -47,8 +48,8 @@ const Button: React.FC<ButtonProps>  = ({
           size={24}
           className="
           absolute
-          left-4
-          top-3 
+          left-1
+          top-1
           "
         />
 

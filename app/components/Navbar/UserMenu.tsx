@@ -8,9 +8,11 @@ import { Avatar } from "../Avatar";
 import { useCallback, useEffect, useState } from "react";
 import { MenuItem } from "./MenuItem";
 import useRegisterModal from '@/app/hooks/useRegisterModal';
+import useLoginModal from '@/app/hooks/useLoginModal';
 
 export const UserMenu = () => {
-  const registerModal=useRegisterModal()
+  const registerModal=useRegisterModal();
+  const loginModal=useLoginModal()
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen= useCallback(()=>{
     setIsOpen((value)=>!value);
@@ -20,7 +22,6 @@ export const UserMenu = () => {
     <div className="relative"    >
       <div className="flex flex-row items-center gap-3">
         <div
-          // onClick={toggleOpen} 
           className="
             hidden
             md:block
@@ -37,6 +38,7 @@ export const UserMenu = () => {
           Airbnb you home
         </div>
         <div
+        onClick={toggleOpen} 
         className="
           p-4
           md:py-1
@@ -81,7 +83,7 @@ export const UserMenu = () => {
           {/* para el menu */}
           <>
             <MenuItem
-              onClick={toggleOpen}
+              onClick={loginModal.onOpen}
               label="Login"
             />
             <MenuItem
