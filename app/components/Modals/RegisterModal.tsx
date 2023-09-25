@@ -17,7 +17,7 @@ import {
   useForm
 } from "react-hook-form";
 
-//import useLoginModal from "@/app/hooks/useLoginModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 import Modal from "./Modal";
@@ -27,7 +27,7 @@ import Button from "../Button";
 
 const RegisterModal= () => {
   const registerModal = useRegisterModal();
-  //const loginModal = useLoginModal();
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
 
   console.log(registerModal)
@@ -52,7 +52,7 @@ const RegisterModal= () => {
     .then(() => {
       toast.success('Registered!');
       registerModal.onClose();
-     // loginModal.onOpen();
+      loginModal.onOpen();
     })
     .catch((error) => {
       toast.error(error);
@@ -62,11 +62,11 @@ const RegisterModal= () => {
     })
   }
 
-  /* const onToggle = useCallback(() => {
+   const onToggle = useCallback(() => {
     registerModal.onClose();
     loginModal.onOpen();
   }, [registerModal,loginModal])
- */
+ 
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
@@ -114,6 +114,7 @@ const RegisterModal= () => {
         outline 
         label="Continue with Github"
         icon={AiFillGithub}
+        // este login con github es propio de nextAuth, lo del then estoy probando para que tambien me salga el toast de logeado
         onClick={() => signIn('github')}
       />
       <div 
@@ -124,15 +125,15 @@ const RegisterModal= () => {
           font-light
         "
       >
-        <p>Already have an account?
+        <p>Ya tenes una cuenta?
           <span 
-            onClick={registerModal.onClose} 
+            onClick={onToggle} 
             className="
               text-neutral-800
               cursor-pointer 
               hover:underline
             "
-            > Log in</span>
+            > Inicia Sesion </span>
         </p>
       </div>
     </div>

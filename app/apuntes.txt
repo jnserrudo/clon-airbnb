@@ -67,3 +67,17 @@ significa que no puede haber dos registros en la tabla Account con la misma comb
 En resumen, el modelo Account se utiliza para almacenar información relacionada con las cuentas de usuario y tiene una relación con el modelo User, lo que permite 
 vincular cuentas de usuario a usuarios específicos en la base de datos. Las anotaciones y atributos se utilizan para definir la estructura de la tabla y las relaciones 
 con la base de datos.
+
+----------------------
+LOGIN DE CUENTAS SOCIALES
+
+GITHUB, EN LA SECCION DE SETTINGS Y LUEGO DEVELOPER SETTINGS, AGREGAMOS NUESTRO PROYECTO, PARA PROBAR PUSIMOS EL LOCALHOST:3000,
+DE ESTA MANERA DAMOS PERMISO A LA APLICACION DE LOGEARNOS, UNA VEZ REALIZADO, TOMAMOS EL CLIENT ID QUE NOS DA ESTA REGISTRACION
+
+UNA CURIOSIDAD MUY IMPORTANTE!
+YO CREE LA CUENTA NORMAL CON MI CORREO, LUEGO AL QUERER VINCULARLO CON MI GITHUB.. SE VINCULABA PERO NO TOMABA como
+QUE ESTARIA LOGEADO, POR LO QUE HICE, FUE ELIMINAR EL USUARIO QUE CREE, PUESTO QUE TENIAN EL MISMO CORREO
+
+ALGO QUE LE PASO AL DEL VIDEO ES QUE NO LE CARGO UNA PARTE DE SU FUENTE, ENTONCES SOLO ELIMINO LA CARPETA .NEXT
+LUEGO VOLVIO A HACER EL NPM RUN DEV, UNA VEZ QUE LO HIZO SE LE VOLVIO A CREAR LA CARPETA, ES MAS QUE NADA POR TEMA DE CACHE
+
