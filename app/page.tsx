@@ -24,6 +24,8 @@ const Home = async ({ searchParams }: HomeProps) => {
     );
   }
 
+  //throw new Error('Algo paso mal')
+
   return (
     <ClientOnly>
       

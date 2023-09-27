@@ -14,6 +14,7 @@ import { User } from '@prisma/client';
 import { signOut } from 'next-auth/react';
 import { SafeUser } from '@/app/types';
 import useRentModal from '@/app/hooks/useRentModal';
+import {useRouter} from "next/navigation"
 
 interface UserMenuProps{
   currentUser?:SafeUser|null
@@ -21,6 +22,8 @@ interface UserMenuProps{
 
 
 export const UserMenu:React.FC<UserMenuProps> = ({currentUser}) => {
+  const router=useRouter() 
+
   const registerModal=useRegisterModal();
   const loginModal=useLoginModal();
 
@@ -108,15 +111,15 @@ export const UserMenu:React.FC<UserMenuProps> = ({currentUser}) => {
 // si tenemos un usuario actual( si estamos logeados, mostraremos cosas distintas, como las que son propias del usuario)
 <>
     <MenuItem
-      onClick={()=>{}}
+      onClick={()=>router.push("/trips")}
       label="Mis viajes"
     />
     <MenuItem
-      onClick={()=>{}}
+      onClick={()=>router.push("/favorites")}
       label="Mis favoritos"
     />
     <MenuItem
-      onClick={()=>{}}
+      onClick={()=>router.push("/reservations")}
       label="Mis reservaciones"
     />
     <MenuItem

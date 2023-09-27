@@ -278,7 +278,7 @@ const RentModal = () => {
     isOpen={rentModal.isOpen}
     onClose={rentModal.onClose}
     onSubmit={handleSubmit(onSubmit)}
-    
+    body={bodyContent}
     actionLabel={actionLabel}
     secondaryActionLabel={secondaryActionLabel}
     secondaryAction={step===STEPS.CATEGORY?undefined:onBack}
