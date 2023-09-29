@@ -8,6 +8,8 @@ import { differenceInDays } from 'date-fns';
 import useSearchModal from '@/app/hooks/useSearchModal';
 import useCountries from '@/app/hooks/useCountries';
 
+//COMPONENTE BUSCADOR DE LOS ALQUILERES
+
 const Search = () => {
   const searchModal = useSearchModal();
   const params = useSearchParams();

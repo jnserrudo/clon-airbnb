@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Button from "./Button";
 import Heading from "./Heading";
 
+//componente que se renderiza en el caso que no se encuentran reservas
+
 interface EmptyStateProps {
   title?: string;
   subtitle?: string;
