@@ -123,7 +123,7 @@ export const UserMenu:React.FC<UserMenuProps> = ({currentUser}) => {
       label="Mis reservaciones"
     />
     <MenuItem
-    onClick={()=>{}}
+    onClick={()=>router.push("/properties")}
     label="Mis propiedades"
 />
 <MenuItem

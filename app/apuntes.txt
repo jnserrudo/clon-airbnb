@@ -3,10 +3,10 @@ npm install -D prisma
 npx prisma init
 
 ------------
-Lo que estás viendo es una definición de un modelo de datos utilizando Prisma, un popular ORM (Mapeador Objeto-Relacional) para bases de datos en JavaScript y TypeScript. 
+En el archivo de prisma se esta viendo una definición de un modelo de datos utilizando Prisma, un popular ORM (Mapeador Objeto-Relacional) para bases de datos en JavaScript y TypeScript. 
 Prisma utiliza un lenguaje específico de dominio (DSL) para definir los modelos de datos y sus relaciones en la base de datos.
 
-Aquí está la explicación de las anotaciones y atributos que se utilizan en el modelo User que has proporcionado:
+En el modelo User que has proporcionado:
 
 id String @id @default(auto()) @map("_id") @db.ObjectId: Esto define el campo id del modelo User.
 
@@ -36,7 +36,8 @@ Las anotaciones con @ se utilizan para especificar metadatos adicionales sobre l
 utilizados por Prisma para generar las consultas SQL adecuadas y facilitar la interacción con la base de datos desde la aplicación.
 
 --------------------------------------------------------------------------------
-El modelo Account que has proporcionado también está definido utilizando Prisma y tiene algunas características interesantes:
+
+El modelo Account:
 
 id String @id @default(auto()) @map("_id") @db.ObjectId: Define el campo id como una cadena de texto que es la clave primaria de la tabla. Al igual que en el modelo 
 anterior, se usa @default(auto()) para generar automáticamente el valor del campo y @map("_id") para mapearlo a la columna _id en la base de datos. @db.ObjectId 
@@ -64,11 +65,18 @@ relacionados en Account también se eliminarán en cascada.
 @@unique([provider, providerAccountId]): Esta anotación establece una restricción de unicidad en la combinación de los campos provider y providerAccountId, lo que 
 significa que no puede haber dos registros en la tabla Account con la misma combinación de proveedor y proveedorAccountId.
 
-En resumen, el modelo Account se utiliza para almacenar información relacionada con las cuentas de usuario y tiene una relación con el modelo User, lo que permite 
+El modelo Account se utiliza para almacenar información relacionada con las cuentas de usuario y tiene una relación con el modelo User, lo que permite 
 vincular cuentas de usuario a usuarios específicos en la base de datos. Las anotaciones y atributos se utilizan para definir la estructura de la tabla y las relaciones 
 con la base de datos.
 
 ----------------------
+
+MONGO ATLAS:
+EN EL MINUTO 1:36:50 EMPIEZA LA VINCULACION CON MONGODB 
+
+EN EL MINUTO 1:40:00 COMENTA QUE TENEMOS QUE TENER INSTALADA LA EXTENSION DE  PRISMA EN VSCODE
+
+
 LOGIN DE CUENTAS SOCIALES
 
 GITHUB, EN LA SECCION DE SETTINGS Y LUEGO DEVELOPER SETTINGS, AGREGAMOS NUESTRO PROYECTO, PARA PROBAR PUSIMOS EL LOCALHOST:3000,
@@ -80,4 +88,8 @@ QUE ESTARIA LOGEADO, POR LO QUE HICE, FUE ELIMINAR EL USUARIO QUE CREE, PUESTO Q
 
 ALGO QUE LE PASO AL DEL VIDEO ES QUE NO LE CARGO UNA PARTE DE SU FUENTE, ENTONCES SOLO ELIMINO LA CARPETA .NEXT
 LUEGO VOLVIO A HACER EL NPM RUN DEV, UNA VEZ QUE LO HIZO SE LE VOLVIO A CREAR LA CARPETA, ES MAS QUE NADA POR TEMA DE CACHE
+
+
+------------
+
 
