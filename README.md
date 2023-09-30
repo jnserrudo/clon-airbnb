@@ -1,34 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Clon de Airbnb de Pila Completa con Next.js 13 App Router: React, Tailwind, Prisma, MongoDB, NextAuth 2023
 
-## Getting Started
 
-First, run the development server:
+Características:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- Diseño con Tailwind
+- Animaciones y efectos de Tailwind
+- Totalmente receptivo
+- Autenticación de credenciales
+- Autenticación de Google
+- Autenticación de Github
+- Subida de imágenes utilizando Cloudinary CDN
+- Validación y manejo de formularios del cliente utilizando react-hook-form
+- Manejo de errores del servidor utilizando react-toast
+- Calendarios con react-date-range
+- Estado de carga de la página
+- Estado vacío de la página
+- Sistema de Reserva / Reservación
+- Cancelación de reserva de invitados
+- Cancelación de reserva de propietarios
+- Creación y eliminación de propiedades
+- Cálculo de precios
+- Algoritmo de búsqueda avanzada por categoría, rango de fechas, ubicación en el mapa, número de invitados, habitaciones y baños
+  - Por ejemplo, filtraremos las propiedades que tienen una reserva en el rango de fechas deseado para viajar
+- Sistema de Favoritos
+- Filtros de URL compartibles
+  - Supongamos que seleccionas una categoría, ubicación y rango de fechas, podrás compartir una URL con un amigo que no ha iniciado sesión en otro navegador y verá los mismos resultados
+- Cómo escribir rutas POST y DELETE en manejadores de rutas (app/api)
+- Cómo obtener datos en componentes react del servidor accediendo directamente a la base de datos (¡SIN API! ¡como por arte de magia!)
+- Cómo manejar archivos como error.tsx y loading.tsx, que son nuevos archivos de plantilla de Next 13 para unificar la carga y el manejo de errores
+- ¡Cómo manejar las relaciones entre componentes del servidor y secundarios!
+
+### Requisitos Previos
+
+**Node versión 14.x**
+
+
+### Install packages
+
+```shell
+npm i
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Setup .env file
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```js
+DATABASE_URL=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GITHUB_ID=
+GITHUB_SECRET=
+NEXTAUTH_SECRET=
+```
 
-## Learn More
+### Setup Prisma
 
-To learn more about Next.js, take a look at the following resources:
+```shell
+npx prisma db push
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Iniciar app
 
-## Deploy on Vercel
+```shell
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Comandos disponibles
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ `npm run [comando]`
+
+| comando        | descripcion                                           |
+| :-------------- | :---------------------------------------             |
+| `dev`           | inicia una instancia del desarrollo de la aplicacion |
