@@ -1,19 +1,29 @@
 import ListingCard from "@/app/components/listings/ListingCard";
 import EmptyState from "@/app/components/EmptyState";
-
-import getListings, { 
-  IListingsParams
-} from "@/app/actions/getListings";
+import getListings, { IListingsParams } from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
 import { Container } from "./components/Container";
+import { useSearchParams } from 'next/navigation';
 
 interface HomeProps {
   searchParams: IListingsParams
 };
 
-const Home = async ({ searchParams }: HomeProps) => {
-  const listings = await getListings(searchParams);
+const Home = async () => {
+  const searchParams = useSearchParams();
+  
+  const listings = await getListings({
+    userId: searchParams?.get('userId') || undefined,
+    roomCount: searchParams?.get('roomCount') ? Number(searchParams.get('roomCount')) : undefined,
+    guestCount: searchParams?.get('guestCount') ? Number(searchParams.get('guestCount')) : undefined,
+    bathroomCount: searchParams?.get('bathroomCount') ? Number(searchParams.get('bathroomCount')) : undefined,
+    startDate: searchParams?.get('startDate') || undefined,
+    endDate: searchParams?.get('endDate') || undefined,
+    locationValue: searchParams?.get('locationValue') || undefined,
+    category: searchParams?.get('category') || undefined,
+  });
+
   const currentUser = await getCurrentUser();
 
   if (listings.length === 0) {
@@ -24,11 +34,8 @@ const Home = async ({ searchParams }: HomeProps) => {
     );
   }
 
-  //throw new Error('Algo paso mal')
-
   return (
     <ClientOnly>
-      
       <Container>
         <div 
           className="
